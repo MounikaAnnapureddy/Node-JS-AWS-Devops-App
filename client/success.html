@@ -44,7 +44,7 @@
       var params = new URLSearchParams(window.location.search);
       var id = params.get("id");
 
-      fetch("/checkout-session?id=" + id)
+      fetch("/submit-form")
         .then((response) => response.json())
         .then((session) => {
           // formatting the JSON we want back:
