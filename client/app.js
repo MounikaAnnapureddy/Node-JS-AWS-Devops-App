@@ -11,7 +11,7 @@ var URL = "http://localhost:3000";
 btnWorshop1.addEventListener("click", function (e) {
   e.preventDefault();
 
-  location.href = URL+"/resume";
+  location.href = URL+"/Resume_MounikaAnnapureddy";
 });
 //btnWorshop2.addEventListener("click", function (e) {
   //e.preventDefault();
