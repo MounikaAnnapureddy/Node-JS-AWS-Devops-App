@@ -1,7 +1,7 @@
 // Bringing the register buttons from HTML
 
 var btnOpen = document.getElementById("work-1");
-var btnReview = doccument.getElementById("review");
+var btnReview = document.getElementById("review");
 //var btnWorshop2 = document.getElementById("work-2");
 //var btnWorshop3 = document.getElementById("work-3");
 
