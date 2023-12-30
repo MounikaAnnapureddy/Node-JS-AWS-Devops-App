@@ -41,6 +41,7 @@ app.get("/workshop1", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/workshops/workshop1.html");
   res.sendFile(path);
 });
+/*
 app.get("/workshop2", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/workshops/workshop2.html");
   res.sendFile(path);
@@ -49,7 +50,7 @@ app.get("/workshop3", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/workshops/workshop3.html");
   res.sendFile(path);
 });
-
+*/
 // ____________________________________________________________________________________
 
 const domainURL = process.env.DOMAIN;
