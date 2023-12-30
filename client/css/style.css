@@ -8,7 +8,8 @@
 body {
   padding-top: 70px;
   min-height: 150vh;
-  background: linear-gradient(135deg, #9D9C62, #05caff);
+  background-color: #05caff;
+  /*background: linear-gradient(135deg, #9D9C62, #05caff);*/
   background-repeat: no-repeat;
 }
 
