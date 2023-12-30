@@ -58,17 +58,13 @@ const domainURL = process.env.DOMAIN;
 app.post("/submit-form", async (req, res) => {
   // Retrieve form data from the request body
   const formData = req.body;
-  const session = stripe.formsubmitted({
-    success_url: `${domainURL}/success?id={SUBMISSION_SESSION_ID}`,
-    cancel_url: `${domainURL}/cancel`,
-  });
-
+  
   // Perform any necessary validation or processing with formData
   // ...
 
   // Respond with a success message or any other relevant information
   res.json({
-    id: session.id,
+    
     success: true,
     message: "Form submitted successfully!",
     // Include any additional data you want to send back to the client
