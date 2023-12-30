@@ -514,36 +514,48 @@
 
     <!-- Client-side Js -->
     <script>
-      
-      var button = document.getElementById("submit-btn");
+  var button = document.getElementById("submit-btn");
 
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
 
-        // form validation:
-        let name = document.getElementById("nameField").value;
-        if (name == "") {
-          alert("Please fill all required fields!");
-          return false;
+    // Form validation:
+    let name = document.getElementById("nameField").value;
+    if (name == "") {
+      alert("Please fill all required fields!");
+      return false;
+    }
+
+    // Create an object with form data
+    var formData = {
+      name: name,
+      // Add other form fields as needed
+    };
+
+    // Fetch request to submit form data
+    fetch("/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        // Assuming the server responds with a result indicating success
+        if (result.success) {
+          alert("Form submitted successfully!");
+          // Add any additional actions here
+        } else {
+          alert("Form submission failed. Please try again.");
         }
-        
-        // Setting this PriceId here:
-        var priceId = "";
-
-        fetch("/create-checkout-session/" + priceId, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((session) => {
-            stripe.redirectToCheckout({ sessionId: session.id });
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-    </script>
+  });
+</script>
+
+   
   </body>
 </html>
