@@ -1,4 +1,3 @@
-<!--
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,9 +11,9 @@
       rel="stylesheet"
     />
   </head>
-
   <body>
     <div class="navbar">
+
       <a class="nav-content" href="https://sample-nodejs-project-for-beginners.com/" target="_blank">
         <img src="../assets/logo.svg" alt="" height="60" width="350" />
       </a>
@@ -23,10 +22,10 @@
       
       <div class="fields">
         <div class="title">
-          <h1>Review Form</h1>
+          <h1>RESUME</h1>
         </div>
         <div class="sub-title">
-          Use this form to review the resume.
+          Please Provide your feedback.
         </div>
         <div class="content">
           <form method="post" name="Form">
@@ -50,33 +49,25 @@
                 />
               </div>
               <div class="input-box">
-                <span class="details">Designation</span>
-                <input
-                  type="text"
-                  placeholder="Enter your designation"
-                  name="designationField"
-                  required
-                />
-              </div>
-              <div class="input-box">
-                <span class="details">Email</span>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  name="emailField"
-                  required
-                />
-              </div>
-              <div class="input-box">
-                <span class="details">Phone Number</span>
+                <span class="details">Rating</span>
                 <input
                   type="number"
-                  step="1"
-                  placeholder="Enter your number"
-                  name="numberField"
+                  placeholder="Enter ratings from 1-5"
+                  name="ratingsField"
                   required
                 />
               </div>
+              <div class="input-box">
+                <span class="details">Comments</span>
+                <input
+                  type="text"
+                  placeholder="Enter your comments"
+                  name="commentsField"
+                  required
+                />
+              </div>
+              
+              
               <div class="input-box country">
                 <span class="details">Your Location</span>
                 <select id="countries" name="countries" size="1">
@@ -476,17 +467,15 @@
             <div class="button">
               <input
                 type="submit"
-                value="Proceed to Checkout"
-                id="checkout-btn"
+                value="Submit"
+                id="submit-btn"
               />
             </div>
           </form>
         </div>
       </div>
-  -->
-
-      <!-- SPEAKER SECTION  -->
-<!--
+  
+      <!-- Speaker Section  -->
       <div id="speaker-container">
         <div class="title">
           <h1>Speaker</h1>
@@ -494,16 +483,14 @@
         <div id="speaker-details">
           <img
             id="speaker-img"
-            src="../assets/Speaker_Imgs/Saiyam Pathak.jpg"
+            src="../assets/Speaker_Imgs/ChadMCrowell.jpeg"
             alt=""
           />
-          <span id="speaker-name">Saiyam Pathak</span>
+          <span id="speaker-name">Chad M Crowell</span>
           <div id="speaker-intro">
-            Saiyam is working as Director of Technical Evangelism at Civo. <br><br><br><br><br>
+            Chad is an IT professional for 14+ years, mostly as a sys admin/ops. Over 3 years as a trainer on topics such as Kubernetes, DevOps, CI/CD, Cloud and more. <br><br><br>
           </div>
--->
           <!-- Social Icons -->
-<!--
           <div class="social">
             <a href="#" target="_blank">
               <i id="twitter" class="icon-twitter"></i>
@@ -520,45 +507,46 @@
           </div>
         </div>
       </div>
-
     </div>
--->
     <!-- Client-side Js -->
-<!--  
-<script>
-      var stripe = Stripe(
-        "pk_test_51L5AsSSCC8JVWfvgEtfJkzHMTh7Z5PLY5m1yhR379sJgwAVZEe13NaiG33wsHSyHnPJMjTNOosiPk6AeMI8q0ims0049IKffiu"
-      );
-      var button = document.getElementById("checkout-btn");
-      
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // form validation:
-        let name = document.getElementById("nameField").value;
-        if (name == "") {
-          alert("Please fill all required fields!");
-          return false;
+    <script>
+  var button = document.getElementById("submit-btn");
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+    // Form validation:
+    let name = document.getElementById("nameField").value;
+    if (name == "") {
+      alert("Please fill all required fields!");
+      return false;
+    }
+    // Create an object with form data
+    var formData = {
+      name: name,
+      // Add other form fields as needed
+    };
+    // Fetch request to submit form data
+    fetch("/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        // Assuming the server responds with a result indicating success
+        if (result.success) {
+          alert("Form submitted successfully!");
+          // Add any additional actions here
+        } else {
+          alert("Form submission failed. Please try again.");
         }
-
-        // Setting this PriceId here:
-        var priceId = "price_1M0KtiSCC8JVWfvgcKspC6qQ";
-
-        fetch("/create-checkout-session/" + priceId, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((session) => {
-            stripe.redirectToCheckout({ sessionId: session.id });
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-    </script>
+  });
+</script>
+   
   </body>
 </html>
--->
