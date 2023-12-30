@@ -54,7 +54,22 @@ app.get("/workshop3", (req, res) => {
 // ____________________________________________________________________________________
 
 const domainURL = process.env.DOMAIN;
-app.post("/create-checkout-session/:pid", async (req, res) => {
+app.post("/submit-form", async (req, res) => {
+  // Retrieve form data from the request body
+  const formData = req.body;
+
+  // Perform any necessary validation or processing with formData
+  // ...
+
+  // Respond with a success message or any other relevant information
+  res.json({
+    id: session.id,
+    success: true,
+    message: "Form submitted successfully!",
+    // Include any additional data you want to send back to the client
+  });
+});
+/*app.post("/create-checkout-session/:pid", async (req, res) => {
   
   const priceId = req.params.pid;
   
@@ -75,7 +90,7 @@ app.post("/create-checkout-session/:pid", async (req, res) => {
   res.json({
     id: session.id,
   });
-});
+}); */
 
 // Server listening:
 app.listen(port, () => {
