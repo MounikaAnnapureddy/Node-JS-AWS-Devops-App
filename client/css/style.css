@@ -251,6 +251,16 @@ body {
   background-color: #1b2731;
   margin-right: 8px; /* Add some margin between the buttons (adjust as needed) */
 }
+.text-with-image {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.right-aligned-image {
+  margin-left: auto; /* Push the image to the right */
+  margin-right: 0;   /* Reset right margin to zero */
+}
+
 
 @media (max-width: 800px) {
   .header {
