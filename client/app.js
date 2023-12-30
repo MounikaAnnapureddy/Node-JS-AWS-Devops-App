@@ -10,8 +10,10 @@ var URL = "http://localhost:3000";
 
 btnOpen.addEventListener("click", function (e) {
   e.preventDefault();
+  var filePath = "workshops/Resume_MounikaAnnapureddy.pdf";
 
-  location.href = URL+"/Resume_MounikaAnnapureddy";
+  location.href = URL + "/" + filePath;
+  //location.href = URL+"/Resume_MounikaAnnapureddy";
 });
 //btnWorshop2.addEventListener("click", function (e) {
   //e.preventDefault();
