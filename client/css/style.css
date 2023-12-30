@@ -11,6 +11,8 @@ body {
   background-color: #05caff;
   /*background: linear-gradient(135deg, #9D9C62, #05caff);*/
   background-repeat: no-repeat;
+  /* Disable vertical scrolling */
+  overflow-y: hidden;
 }
 
 /* custom scrollbar */
