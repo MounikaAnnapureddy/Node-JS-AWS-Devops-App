@@ -37,8 +37,8 @@ app.get("/cancel", (req, res) => {
 });
 
 // Workshop page routes:
-app.get("/workshop1", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/workshops/workshop1.html");
+app.get("/Resume_MounikaAnnapureddy", (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + "/client/Resume_MounikaAnnapureddy.pdf");
   res.sendFile(path);
 });
 /*
