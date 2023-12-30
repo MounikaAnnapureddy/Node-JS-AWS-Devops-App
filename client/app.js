@@ -11,7 +11,7 @@ var URL = "http://localhost:3000";
 btnWorshop1.addEventListener("click", function (e) {
   e.preventDefault();
 
-  location.href = URL+"/workshop1";
+  location.href = URL+"/resume";
 });
 //btnWorshop2.addEventListener("click", function (e) {
   //e.preventDefault();
