@@ -38,7 +38,7 @@ app.get("/cancel", (req, res) => {
 
 // Workshop page routes:
 app.get("/Resume_MounikaAnnapureddy", (req, res) => {
-  const pdfpath = resolve(process.env.STATIC_DIR + "/client/Resume_MounikaAnnapureddy.pdf");
+  const pdfpath = resolve(process.env.STATIC_DIR + "/workshops/Resume_MounikaAnnapureddy.pdf");
   res.sendFile(path);
 });
 /*
