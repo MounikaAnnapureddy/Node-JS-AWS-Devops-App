@@ -41,11 +41,12 @@ app.get("/Resume_MounikaAnnapureddy", (req, res) => {
   const pdfpath = resolve(process.env.STATIC_DIR + "/workshops/Resume_MounikaAnnapureddy.pdf");
   res.sendFile(path);
 });
-/*
-app.get("/workshop2", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/workshops/workshop2.html");
+
+app.get("/ReviewForm", (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + "/workshops/ReviewForm.html");
   res.sendFile(path);
 });
+/*
 app.get("/workshop3", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/workshops/workshop3.html");
   res.sendFile(path);
