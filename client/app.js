@@ -11,15 +11,15 @@ var URL = "http://localhost:3000";
 
 btnOpen.addEventListener("click", function (e) {
   e.preventDefault();
-  var filePath = "workshops/Resume_MounikaAnnapureddy.pdf";
+  var filePath1 = "workshops/Resume_MounikaAnnapureddy.pdf";
 
-  location.href = URL + "/" + filePath;
+  location.href = URL + "/" + filePath1;
   //location.href = URL+"/Resume_MounikaAnnapureddy";
 });
 btnReview.addEventListener("click", function (e) {
   e.preventDefault;
-  //var filePath = "workshops/ReviewForm.html"
-  location.href = URL+"/ReviewForm";
+  var filePath2 = "workshops/ReviewForm.html"
+  location.href = URL+ "/" + filepath2;
 });
 //btnWorshop2.addEventListener("click", function (e) {
   //e.preventDefault();
