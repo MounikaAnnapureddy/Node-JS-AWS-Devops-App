@@ -465,13 +465,12 @@
               </div>
             </div>
             <div class="button">
-              <form method="POST" action="success.html">
               <input
                 type="submit"
                 value="Submit"
                 id="submit-btn"
               />
-              </form>
+              
             </div>
           </form>
         </div>
@@ -547,7 +546,7 @@ button.addEventListener("click", function (e) {
   .then(({ redirected, result }) => {
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
-      window.location.href = response.url;
+      window.location.href = result.url;
     } else {
       // Check if the response has a success property
       if (result && result.success) {
