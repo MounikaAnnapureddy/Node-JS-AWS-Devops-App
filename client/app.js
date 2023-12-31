@@ -28,7 +28,7 @@ reviewForm.addEventListener("submit", function (e) {
 
   // Assuming you have a form with a name field
   var nameField = document.getElementById("nameField"); // Adjust the ID based on your actual HTML
-
+  var filePath = "success.html";
   var formData = {
     name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
     // Include other form fields as needed
@@ -57,6 +57,7 @@ reviewForm.addEventListener("submit", function (e) {
         // Check if the response has a success property
         if (result && result.success) {
           alert("Form submitted successfully!");
+          location.href = URL + "/" + filePath;
           // Add any additional actions here
         } else {
           alert("Form submission failed. Please try again.");
