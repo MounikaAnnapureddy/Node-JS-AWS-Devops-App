@@ -19,7 +19,7 @@ btnOpen.addEventListener("click", function (e) {
 btnReview.addEventListener("click", function (e) {
   e.preventDefault;
   var filePath = "workshops/ReviewForm.html"
-  location.href = URL+ "/" + filepath;
+  location.href = URL+ "/" + filePath;
 });
 //btnWorshop2.addEventListener("click", function (e) {
   //e.preventDefault();
