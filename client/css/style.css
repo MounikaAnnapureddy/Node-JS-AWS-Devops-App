@@ -254,11 +254,13 @@ body {
 .text-with-image {
   display: flex;
   flex-wrap: wrap;
+  text-align: left;
 }
 
 .right-aligned-image {
   margin-left: auto; /* Push the image to the right */
   margin-right: 0;   /* Reset right margin to zero */
+  display: block;
 }
 
 
