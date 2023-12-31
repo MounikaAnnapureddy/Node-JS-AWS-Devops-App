@@ -61,39 +61,4 @@ reviewForm.addEventListener("submit", function (e) {
 
 
 
------------------------------------------------------------------------------------------
-/*btnReview.addEventListener("click", function (e) {
-  e.preventDefault();
-  var filePath = "workshops/ReviewForm.html";
-  location.href = URL+ "/" + filePath;
-  // Assuming you have a form with a name field
-  var nameField = document.getElementById("name"); // Adjust the ID based on your actual HTML
 
-  var formData = {
-    name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if name is not provided
-    // Include other form fields as needed
-  };
-
-  // Send the form data to the server
-  fetch(`${URL}/submit-form`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        // If the form submission is successful, redirect or display a success message
-        //console.log("Form submitted successfully!");
-        location.href = URL+"/success.html";
-      } else {
-        // If there's an error, handle it appropriately
-        console.error("Error submitting form:", data.message);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-});*/
