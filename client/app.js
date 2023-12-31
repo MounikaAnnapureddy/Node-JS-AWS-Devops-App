@@ -16,11 +16,11 @@ btnOpen.addEventListener("click", function (e) {
   location.href = URL + "/" + filePath;
   //location.href = URL+"/Resume_MounikaAnnapureddy";
 });
-btnReview.addEventListener("click", function (e) {
+/*btnReview.addEventListener("click", function (e) {
   e.preventDefault();
   var filePath = "workshops/ReviewForm.html"
   location.href = URL+ "/" + filePath;
-});
+});*/
 btnReview.addEventListener("click", function (e) {
   e.preventDefault();
   var filePath = "workshops/ReviewForm.html";
