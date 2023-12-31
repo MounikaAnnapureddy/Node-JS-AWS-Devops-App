@@ -510,44 +510,54 @@
     </div>
     <!-- Client-side Js -->
     <script>
-  var button = document.getElementById("submit-btn");
-      var URL = "http://localhost:3000";
-  button.addEventListener("click", function (e) {
-    e.preventDefault();
-    // Form validation:
-    let name = document.getElementById("nameField").value;
-    if (name == "") {
-      alert("Please fill all required fields!");
-      return false;
-    }
-    // Create an object with form data
-    var formData = {
-      name: name,
-      // Add other form fields as needed
-    };
-    // Fetch request to submit form data
-    fetch("/submit-form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+ var button = document.getElementById("submit-btn");
+button.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // Form validation:
+  let name = document.getElementById("nameField").value;
+  if (name.trim() === "") {
+    alert("Please fill all required fields!");
+    return false;
+  }
+
+  // Create an object with form data
+  var formData = {
+    name: name,
+    // Add other form fields as needed
+  };
+
+  // Fetch request to submit form data
+  fetch("/submit-form", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      if (response.redirected) {
+        // If the response is a redirect, manually navigate to the new location
+        window.location.href = response.url;
+      } else {
+        // Parse JSON if the response is not a redirect
+        return response.json();
+      }
     })
-      .then((response) => response.json())
-      .then((result) => {
-        // Assuming the server responds with a result indicating success
-        if (result.success) {
-          alert("Form submitted successfully!");
-          location.href = URL + "/success.html";
-          // Add any additional actions here
-        } else {
-          alert("Form submission failed. Please try again.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  });
+    .then((result) => {
+      // Check if the response has a success property
+      if (result && result.success) {
+        alert("Form submitted successfully!");
+        // Add any additional actions here
+      } else {
+        alert("Form submission failed. Please try again.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+;
 </script>
    
   </body>
