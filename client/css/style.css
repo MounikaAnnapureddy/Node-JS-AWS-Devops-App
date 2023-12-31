@@ -95,23 +95,23 @@ body {
   border: 2px solid black;
 
 }
- .text-with-image {
+/* .text-with-image {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start; /* Center vertically within the flex container */
     }
-
-    .text-with-image img {
+*/
+    /*.text-with-image img {
       align-self: flex-start;
       margin-left: auto; /* Push the image to the right */
-      margin-right: 20px; /* Adjust the margin as needed */
-    }
+     /* margin-right: 20px; /* Adjust the margin as needed */ */
+    }*/
 
-.right-aligned-image {
+/*.right-aligned-image {
   margin-left: auto; /* Push the image to the right */
   margin-right: 0;   /* Reset right margin to zero */
-  display: block;
-}
+ /* display: block; */
+} */
 /* ============================================================================== */
 /* Speaker Cards */
 
