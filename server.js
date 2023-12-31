@@ -7,7 +7,8 @@ const port = process.env.PORT || 3000;
 require("dotenv").config();
 
 const api_key = process.env.SECRET_KEY;
-
+const emailUser = process.env.EMAIL_USER;
+const emailPassword = process.env.EMAIL_PASSWORD;
 const stripe = require("stripe")(api_key);
 
 // ------------ Imports & necessary things here ------------
@@ -53,7 +54,12 @@ app.get("/workshop3", (req, res) => {
 });
 */
 // ____________________________________________________________________________________
-
+const mailOptions = {
+  from: formData.email,
+  to: emailUser,
+  subject: "New Form Submission",
+  text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
+};
 const domainURL = process.env.DOMAIN;
 app.post("/submit-form", async (req, res) => {
   // Retrieve form data from the request body
