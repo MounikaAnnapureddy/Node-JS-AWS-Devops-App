@@ -536,15 +536,17 @@ button.addEventListener("click", function (e) {
     body: JSON.stringify(formData),
   })
     .then((response) => {
-      if (response.redirected) {
-        // If the response is a redirect, manually navigate to the new location
-        window.location.href = response.url;
-      } else {
-        // Parse JSON if the response is not a redirect
-        return response.json();
-      }
-    })
-    .then((result) => {
+    // Always parse JSON if the response is not a redirect
+    return response.json().then((result) => ({
+      redirected: response.redirected,
+      result: result,
+    }));
+  })
+  .then(({ redirected, result }) => {
+    if (redirected) {
+      // If the response is a redirect, manually navigate to the new location
+      window.location.href = response.url;
+    } else {
       // Check if the response has a success property
       if (result && result.success) {
         alert("Form submitted successfully!");
@@ -552,7 +554,8 @@ button.addEventListener("click", function (e) {
       } else {
         alert("Form submission failed. Please try again.");
       }
-    })
+    }
+  })
     .catch((error) => {
       console.error("Error:", error);
     });
