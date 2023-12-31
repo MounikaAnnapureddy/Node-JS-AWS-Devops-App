@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 // creating a route for success page:
 app.get("/success", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/success.html");
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   res.sendFile(path);
 });
 
