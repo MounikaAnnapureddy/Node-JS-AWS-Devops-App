@@ -55,7 +55,7 @@ app.get("/workshop3", (req, res) => {
 */
 // ____________________________________________________________________________________
 const mailOptions = {
-  from: formData.email,
+  from: formData.email ? formData.email : "noreply@example.com",
   to: emailUser,
   subject: "New Form Submission",
   text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
