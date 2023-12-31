@@ -22,6 +22,7 @@ btnReview.addEventListener("click", function (e) {
 // Assuming you have a form with an ID "reviewForm"
 
 
+// Assuming you have a form with an ID "reviewForm"
 reviewForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -29,33 +30,44 @@ reviewForm.addEventListener("submit", function (e) {
   var nameField = document.getElementById("nameField"); // Adjust the ID based on your actual HTML
 
   var formData = {
-    name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if name is not provided
+    name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
     // Include other form fields as needed
   };
 
   // Send the form data to the server
-  fetch(`${URL}/submit-form`, {
+  fetch("/submit-form", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        // If the form submission is successful, redirect or display a success message
-        alert("Form submitted successfully!");
-        location.href = URL + "/success.html";
+    .then((response) => {
+      // Always parse JSON if the response is not a redirect
+      return response.json().then((result) => ({
+        redirected: response.redirected,
+        result: result,
+      }));
+    })
+    .then(({ redirected, result }) => {
+      if (redirected) {
+        // If the response is a redirect, manually navigate to the new location
+        window.location.href = response.url;
       } else {
-        // If there's an error, handle it appropriately
-        console.error("Error submitting form:", data.message);
+        // Check if the response has a success property
+        if (result && result.success) {
+          alert("Form submitted successfully!");
+          // Add any additional actions here
+        } else {
+          alert("Form submission failed. Please try again.");
+        }
       }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 });
+
 
 
 
