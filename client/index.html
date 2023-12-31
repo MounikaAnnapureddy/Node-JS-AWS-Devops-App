@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
     <link rel="icon" type="image/x-icon" href="assets/logo.svg" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
-      <style>
-    .text-with-image::after {
-      content: "";
-      display: table;
-      clear: both;
+     <style>
+    .text-with-image {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center; /* Center vertically within the flex container */
     }
 
     .text-with-image img {
-      float: right;
-      margin-left: 20px; /* Adjust the margin as needed */
+      margin-left: auto; /* Push the image to the right */
+      margin-right: 20px; /* Adjust the margin as needed */
     }
   </style>
   </head>
@@ -38,7 +38,7 @@
             This website is one of my DevOps projects. <br></br>
             In short, this project is to deploy and expose a Node JS application to AWS and to the real world.
             
-              <img src = "assets/mounika.svg" alt="" height = "300" width="250" class="right-aligned-image">
+              <img src = "assets/mounika.svg" alt="" height = "300" width="250">
             
           </p>
       </div>
