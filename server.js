@@ -62,8 +62,31 @@ const transporter = nodemailer.createTransport({
   port: 1025, // The port MailDev is configured to use
   ignoreTLS: true,
 });
-
 app.post("/submit-form", async (req, res) => {
+  const formData = req.body;
+
+  const mailOptions = {
+    from: formData.email ? formData.email : "noreply@example.com",
+    to: emailUser,
+    subject: "New Form Submission",
+    text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
+  };
+
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    // Instead of redirecting, send a JSON response indicating success
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error submitting the form. Please try again.",
+    });
+  }
+});
+
+/*app.post("/submit-form", async (req, res) => {
   const formData = req.body;
 
   const mailOptions = {
@@ -86,7 +109,7 @@ app.post("/submit-form", async (req, res) => {
     });
   }
 });
-
+*/
 
 /*app.post("/submit-form", async (req, res) => {
   // Retrieve form data from the request body
