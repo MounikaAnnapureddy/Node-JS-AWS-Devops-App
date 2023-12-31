@@ -76,7 +76,7 @@ app.post("/submit-form", async (req, res) => {
   try {
     // Send the email
     await transporter.sendMail(mailOptions);
-    res.redirect(`${domainURL}/success`);
+    res.redirect("http://localhost:3000/success");
     
   } catch (error) {
     console.error("Error sending email:", error);
