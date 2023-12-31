@@ -56,7 +56,7 @@ app.get("/workshop3", (req, res) => {
 // ____________________________________________________________________________________
 
 const domainURL = process.env.DOMAIN;
-onst transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   host: "localhost",
   port: 1025, // The port MailDev is configured to use
   ignoreTLS: true,
@@ -75,11 +75,8 @@ app.post("/submit-form", async (req, res) => {
   try {
     // Send the email
     await transporter.sendMail(mailOptions);
-
-    res.json({
-      success: true,
-      message: "Form submitted successfully!",
-    });
+    res.redirect("/success");
+    
   } catch (error) {
     console.error("Error sending email:", error);
     res.status(500).json({
