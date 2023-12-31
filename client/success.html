@@ -40,8 +40,18 @@
       // pulling the session-id out of the search bar (that we are getting on the browser)
       var params = new URLSearchParams(window.location.search);
       var id = params.get("id");
+      // Example: If you have an endpoint that returns session data
+fetch("/get-session-data")
+  .then((response) => response.json())
+  .then((session) => {
+    // formatting the JSON we want back:
+    sessionData.innerText = JSON.stringify(session, null, 2);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
-      fetch("/submit-form")
+   /*   fetch("/submit-form")
         .then((response) => response.json())
         .then((session) => {
           // formatting the JSON we want back:
@@ -49,7 +59,7 @@
         })
         .catch((error) => {
           console.error("Error:", error);
-        });
+        });*/
 
       var btn = document.getElementById("home-btn");
       var domain = "http://localhost:3000";
@@ -58,6 +68,7 @@
 
         location.href = domain;
       });
+      
     </script>
   </body>
 </html>
