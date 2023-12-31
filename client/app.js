@@ -46,7 +46,7 @@ btnReview.addEventListener("click", function (e) {
       if (data.success) {
         // If the form submission is successful, redirect or display a success message
         //console.log("Form submitted successfully!");
-        location.href  = URL+"../success.html";
+        location.href  = URL+"/success.html";
       } else {
         // If there's an error, handle it appropriately
         console.error("Error submitting form:", data.message);
