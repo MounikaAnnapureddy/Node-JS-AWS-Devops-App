@@ -17,7 +17,7 @@ btnOpen.addEventListener("click", function (e) {
   //location.href = URL+"/Resume_MounikaAnnapureddy";
 });
 btnReview.addEventListener("click", function (e) {
-  e.preventDefault;
+  e.preventDefault();
   var filePath = "workshops/ReviewForm.html"
   location.href = URL+ "/" + filePath;
 });
