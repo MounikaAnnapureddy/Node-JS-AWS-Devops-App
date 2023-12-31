@@ -24,7 +24,7 @@ btnOpen.addEventListener("click", function (e) {
 btnReview.addEventListener("click", function (e) {
   e.preventDefault();
   var filePath = "workshops/ReviewForm.html";
-
+  location.href = URL+ "/" + filePath;
   // Assuming you have a form with a name field
   var nameField = document.getElementById("name"); // Adjust the ID based on your actual HTML
 
