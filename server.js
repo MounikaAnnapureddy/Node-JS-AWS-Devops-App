@@ -71,7 +71,7 @@ app.post("/submit-form", async (req, res) => {
   
   // ... PDF content creation ...
   pdfDoc.text(`New form submission from ${formData.Name}`);
-  pdfDoc.text(`Name: ${formData.name}`);
+  pdfDoc.text(`Name: ${formData.Name}`);
   pdfDoc.text(`Company Or College: ${formData.CompanyorCollege}`);
   pdfDoc.text(`Rating: ${formData.Rating}`);
   pdfDoc.text(`Comments: ${formData.Comments}`);
