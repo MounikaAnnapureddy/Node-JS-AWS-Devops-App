@@ -78,7 +78,7 @@ app.post("/submit-form", async (req, res) => {
     // Instead of redirecting, send a JSON response indicating success
     res.json({ 
       success: true,
-      success_url: `${domainURL}/submit`,
+      success_url: `${domainURL}/success`,
     });
     
   } catch (error) {
