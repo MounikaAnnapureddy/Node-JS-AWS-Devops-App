@@ -44,6 +44,7 @@ reviewForm.addEventListener("submit", function (e) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       if (data.success) {
         // If the form submission is successful, redirect or display a success message
         alert("Form submitted successfully!");
