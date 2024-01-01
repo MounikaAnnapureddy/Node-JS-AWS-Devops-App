@@ -533,11 +533,11 @@ button.addEventListener("click", function (e) {
 
   // Create an object with form data
   var formData = {
-    Name: Name,
-    CompanyorCollege: CompanyorCollege,
-    Rating: Rating,
-    Comments: Comments,
-    Location: Location,
+    Name: nameField ? nameField.value : "Anonymous",
+    CompanyorCollege: companyOrCollegeField ? companyOrCollegeField.value : "Anonymous",
+    Rating: ratingsField ? ratingsField.value : "0",
+    Comments: commentsField ? commentsField.value : "none provided",
+    Location: countries ? countries.value : "Anonymous",
     // Add other form fields as needed
   };
 
