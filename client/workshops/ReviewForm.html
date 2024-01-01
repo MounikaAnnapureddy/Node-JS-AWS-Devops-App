@@ -521,7 +521,11 @@ button.addEventListener("click", function (e) {
   e.preventDefault();
 
   // Form validation:
-  let name = document.getElementById("nameField").value;
+  let Name = document.getElementById("nameField").value;
+  let CompanyorCollege = document.getElementById("companyField").value;
+  let Rating = document.getElementById("ratingsField").value;
+  let Comments = document.getElementById("commentsField").value;
+  let Location = document.getElementById("countries").value;
   if (name.trim() === "") {
     alert("Please fill all required fields!");
     return false;
@@ -529,7 +533,7 @@ button.addEventListener("click", function (e) {
 
   // Create an object with form data
   var formData = {
-    Name: name,
+    Name: Name,
     CompanyorCollege: CompanyorCollege,
     Rating: Rating,
     Comments: Comments,
