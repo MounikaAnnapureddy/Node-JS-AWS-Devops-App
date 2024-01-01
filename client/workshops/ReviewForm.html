@@ -512,6 +512,7 @@
     <!-- Client-side Js -->
     <script>
  var button = document.getElementById("submit-btn");
+      var URL = "http://localhost:3000";
 button.addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -546,11 +547,12 @@ button.addEventListener("click", function (e) {
   .then(({ redirected, result }) => {
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
-      window.location.href = result.url;
+      window.location.href = result.URL;
     } else {
       // Check if the response has a success property
       if (result && result.success) {
         alert("Form submitted successfully!");
+        location.href = URL + "/" + "/success";
         // Add any additional actions here
       } else {
         alert("Form submission failed. Please try again.");
