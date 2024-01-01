@@ -10,7 +10,7 @@ const api_key = process.env.SECRET_KEY;
 const emailUser = process.env.EMAIL_USER;
 const emailPassword = process.env.EMAIL_PASSWORD;
 const stripe = require("stripe")(api_key);
-
+const PDFDocument = require("pdfkit");
 // ------------ Imports & necessary things here ------------
 
 // Setting up the static folder:
@@ -65,6 +65,22 @@ const transporter = nodemailer.createTransport({
 app.post("/submit-form", async (req, res) => {
   const formData = req.body;
 
+  // Create a PDF document
+  const pdfDoc = new PDFDocument();
+  const pdfBuffer = await new Promise((resolve) => {
+    pdfDoc.pipe(res);
+    pdfDoc.text(`New form submission from ${formData.name}`);
+    pdfDoc.text(`Name: ${formData.name}`);
+    pdfDoc.text(`Company/College: ${formData.company}`);
+    pdfDoc.text(`Rating: ${formData.rating}`);
+    pdfDoc.text(`Comments: ${formData.comments}`);
+    pdfDoc.text(`Location: ${formData.location}`);
+    pdfDoc.end();
+    const chunks = [];
+    pdfDoc.on("data", (chunk) => chunks.push(chunk));
+    pdfDoc.on("end", () => resolve(Buffer.concat(chunks)));
+  });
+
   const mailOptions = {
     from: formData.email ? formData.email : "noreply@example.com",
     to: emailUser,
@@ -73,8 +89,9 @@ app.post("/submit-form", async (req, res) => {
     html: `<p>New form submission from ${formData.name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
     attachments: [
       {
-        filename: 'form-data.json',
-        content: JSON.stringify(formData),
+        filename: 'form-data.pdf',
+        content: pdfBuffer,
+        encoding: 'base64',
       },
     ],
   };
@@ -93,75 +110,6 @@ app.post("/submit-form", async (req, res) => {
     });
   }
 });
-
-/*app.post("/submit-form", async (req, res) => {
-  const formData = req.body;
-
-  const mailOptions = {
-    from: formData.email ? formData.email : "noreply@example.com",
-    to: emailUser,
-    subject: "New Form Submission",
-    text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
-  };
-
-  try {
-    // Send the email
-    await transporter.sendMail(mailOptions);
-    res.redirect("/success");
-    
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error submitting the form. Please try again.",
-    });
-  }
-});
-*/
-
-/*app.post("/submit-form", async (req, res) => {
-  // Retrieve form data from the request body
-  const formData = req.body;
-  
-const mailOptions = {
-  from: formData.email ? formData.email : "noreply@example.com",
-  to: emailUser,
-  subject: "New Form Submission",
-  text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
-};
-  // Perform any necessary validation or processing with formData
-  // ...
-
-  // Respond with a success message or any other relevant information
-  res.json({
-    
-    success: true,
-    message: "Form submitted successfully!",
-    // Include any additional data you want to send back to the client
-  });
-});*/
-/*app.post("/create-checkout-session/:pid", async (req, res) => {
-  
-  const priceId = req.params.pid;
-  
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    success_url: `${domainURL}/success?id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${domainURL}/cancel`,
-    payment_method_types: ["card"],
-    line_items: [
-      {
-        price: priceId,
-        quantity: 1,
-      },
-    ],
-    // allowing the use of promo-codes:
-    allow_promotion_codes: true,
-  });
-  res.json({
-    id: session.id,
-  });
-}); */
 
 // Server listening:
 app.listen(port, () => {
