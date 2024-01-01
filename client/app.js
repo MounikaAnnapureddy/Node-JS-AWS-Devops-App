@@ -35,28 +35,29 @@ reviewForm.addEventListener("submit", function (e) {
   };
 
   // Send the form data to the server
-  fetch(`${URL}/submit-form`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
+  console.log("Before fetch");
+fetch(`${URL}/submit-form`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(formData),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Response data:", data);
+    if (data.success) {
+      console.log("Form submitted successfully!");
+      alert("Form submitted successfully!");
+      window.location.replace(URL + "/success.html");
+    } else {
+      console.log("Form submission failed:", data.message);
+      // Handle error
+    }
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      if (data.success) {
-        // If the form submission is successful, redirect or display a success message
-        alert("Form submitted successfully!");
-        location.href = URL + "/success.html";
-      } else {
-        // If there's an error, handle it appropriately
-        console.error("Error submitting form:", data.message);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 });
 
 
