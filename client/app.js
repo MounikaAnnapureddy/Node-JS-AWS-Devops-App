@@ -30,11 +30,11 @@ reviewForm.addEventListener("submit", function (e) {
   var nameField = document.getElementById("nameField"); // Adjust the ID based on your actual HTML
 
   var formData = {
-    Name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
-    CompanyorCollege: companyField ? companyField.value : "Anonymous",
-    Rating: ratingsField ? ratingsField.value : "0",
-    Comments: commentsField ? commentsField.value : "none provided",
-    Location: countries ? countries.value : "Anonymous",
+    name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
+    companyorCollege: companyField ? companyField.value : "Anonymous",
+    rating: ratingsField ? ratingsField.value : "0",
+    comments: commentsField ? commentsField.value : "none provided",
+    location: countries ? countries.value : "Anonymous",
     // Include other form fields as needed
   };
 

@@ -70,12 +70,12 @@ app.post("/submit-form", async (req, res) => {
   const pdfChunks = [];
   
   // ... PDF content creation ...
-  pdfDoc.text(`New form submission from ${formData.Name}`);
-  pdfDoc.text(`Name: ${formData.Name}`);
-  pdfDoc.text(`Company Or College: ${formData.CompanyorCollege}`);
-  pdfDoc.text(`Rating: ${formData.Rating}`);
-  pdfDoc.text(`Comments: ${formData.Comments}`);
-  pdfDoc.text(`Location: ${formData.Location}`);
+  pdfDoc.text(`New form submission from ${formData.name}`);
+  pdfDoc.text(`Name: ${formData.name}`);
+  pdfDoc.text(`Company Or College: ${formData.companyorCollege}`);
+  pdfDoc.text(`Rating: ${formData.rating}`);
+  pdfDoc.text(`Comments: ${formData.comments}`);
+  pdfDoc.text(`Location: ${formData.location}`);
   pdfDoc.end();
   
   pdfDoc.on("data", (chunk) => pdfChunks.push(chunk));
@@ -86,8 +86,8 @@ app.post("/submit-form", async (req, res) => {
       from: formData.email ? formData.email : "noreply@example.com",
       to: emailUser,
       subject: "New Form Submission",
-      text: `New form submission from ${formData.Name}.\nDetails: ${JSON.stringify(formData)}`,
-      html: `<p>New form submission from ${formData.Name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
+      text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
+      html: `<p>New form submission from ${formData.name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
       attachments: [
         {
           filename: 'form-data.pdf',

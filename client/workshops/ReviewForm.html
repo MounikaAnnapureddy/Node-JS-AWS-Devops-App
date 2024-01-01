@@ -521,11 +521,11 @@ button.addEventListener("click", function (e) {
   e.preventDefault();
 
   // Form validation:
-  let Name = document.getElementById("nameField").value;
-  let CompanyorCollege = document.getElementById("companyField").value;
-  let Rating = document.getElementById("ratingsField").value;
-  let Comments = document.getElementById("commentsField").value;
-  let Location = document.getElementById("countries").value;
+  let name = document.getElementById("nameField").value;
+  let companyorCollege = document.getElementById("companyField").value;
+  let rating = document.getElementById("ratingsField").value;
+  let comments = document.getElementById("commentsField").value;
+  let location = document.getElementById("countries").value;
   if (name.trim() === "") {
     alert("Please fill all required fields!");
     return false;
@@ -533,11 +533,11 @@ button.addEventListener("click", function (e) {
 
   // Create an object with form data
   var formData = {
-    Name: nameField ? nameField.value : "Anonymous",
-    CompanyorCollege: companyOrCollegeField ? companyOrCollegeField.value : "Anonymous",
-    Rating: ratingsField ? ratingsField.value : "0",
-    Comments: commentsField ? commentsField.value : "none provided",
-    Location: countries ? countries.value : "Anonymous",
+    Name: name,
+    CompanyorCollege: companyOrCollege,
+    Rating: rating,
+    Comments: comments,
+    Location: location,
     // Add other form fields as needed
   };
 
