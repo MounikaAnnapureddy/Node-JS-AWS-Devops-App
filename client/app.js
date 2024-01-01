@@ -28,46 +28,36 @@ reviewForm.addEventListener("submit", function (e) {
 
   // Assuming you have a form with a name field
   var nameField = document.getElementById("nameField"); // Adjust the ID based on your actual HTML
-  var filePath = "success.html";
+
   var formData = {
     name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
     // Include other form fields as needed
   };
 
   // Send the form data to the server
-  fetch("/submit-form", {
+  fetch(`${URL}/submit-form`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
   })
-    .then((response) => {
-      // Always parse JSON if the response is not a redirect
-      return response.json().then((result) => ({
-        redirected: response.redirected,
-        result: result,
-      }));
-    })
-    .then(({ redirected, result }) => {
-      if (redirected) {
-        // If the response is a redirect, manually navigate to the new location
-        window.location.href = response.url;
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // If the form submission is successful, redirect or display a success message
+        alert("Form submitted successfully!");
+        location.href = URL + "/success.html";
       } else {
-        // Check if the response has a success property
-        if (result && result.success) {
-          alert("Form submitted successfully!");
-          location.href = URL + "/" + filePath;
-          // Add any additional actions here
-        } else {
-          alert("Form submission failed. Please try again.");
-        }
+        // If there's an error, handle it appropriately
+        console.error("Error submitting form:", data.message);
       }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 });
+
 
 
 
