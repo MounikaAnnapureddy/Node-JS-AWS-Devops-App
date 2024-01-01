@@ -67,50 +67,50 @@ app.post("/submit-form", async (req, res) => {
 
   // Create a PDF document
   const pdfDoc = new PDFDocument();
-  const pdfBuffer = await new Promise((resolve) => {
-    pdfDoc.pipe(res);
-    pdfDoc.text(`New form submission from ${formData.Name}`);
-    pdfDoc.text(`Name: ${formData.name}`);
-    pdfDoc.text(`Company Or College: ${formData.CompanyorCollege}`);
-    pdfDoc.text(`Rating: ${formData.Rating}`);
-    pdfDoc.text(`Comments: ${formData.Comments}`);
-    pdfDoc.text(`Location: ${formData.Location}`);
-    pdfDoc.end();
-    const chunks = [];
-    pdfDoc.on("data", (chunk) => chunks.push(chunk));
-    pdfDoc.on("end", () => resolve(Buffer.concat(chunks)));
+  const pdfChunks = [];
+  
+  // ... PDF content creation ...
+  pdfDoc.text(`New form submission from ${formData.Name}`);
+  pdfDoc.text(`Name: ${formData.name}`);
+  pdfDoc.text(`Company Or College: ${formData.CompanyorCollege}`);
+  pdfDoc.text(`Rating: ${formData.Rating}`);
+  pdfDoc.text(`Comments: ${formData.Comments}`);
+  pdfDoc.text(`Location: ${formData.Location}`);
+  pdfDoc.end();
+  
+  pdfDoc.on("data", (chunk) => pdfChunks.push(chunk));
+  pdfDoc.on("end", async () => {
+    const pdfBuffer = Buffer.concat(pdfChunks);
+
+    const mailOptions = {
+      from: formData.email ? formData.email : "noreply@example.com",
+      to: emailUser,
+      subject: "New Form Submission",
+      text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
+      html: `<p>New form submission from ${formData.name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
+      attachments: [
+        {
+          filename: 'form-data.pdf',
+          content: pdfBuffer.toString('base64'),
+          encoding: 'base64',
+        },
+      ],
+    };
+
+    try {
+      // Send the email
+      await transporter.sendMail(mailOptions);
+      // Instead of redirecting, send a JSON response indicating success
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      res.status(500).json({
+        success: false,
+        message: "Error submitting the form. Please try again.",
+      });
+    }
   });
-
-  const mailOptions = {
-    from: formData.email ? formData.email : "noreply@example.com",
-    to: emailUser,
-    subject: "New Form Submission",
-    text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
-    html: `<p>New form submission from ${formData.name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
-    attachments: [
-      {
-        filename: 'form-data.pdf',
-        content: pdfBuffer,
-        encoding: 'base64',
-      },
-    ],
-  };
-
-  try {
-    // Send the email
-    await transporter.sendMail(mailOptions);
-    // Instead of redirecting, send a JSON response indicating success
-    res.json({success: true});
-    
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error submitting the form. Please try again.",
-    });
-  }
 });
-
 // Server listening:
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
