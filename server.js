@@ -86,8 +86,8 @@ app.post("/submit-form", async (req, res) => {
       from: formData.email ? formData.email : "noreply@example.com",
       to: emailUser,
       subject: "New Form Submission",
-      text: `New form submission from ${formData.name}.\nDetails: ${JSON.stringify(formData)}`,
-      html: `<p>New form submission from ${formData.name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
+      text: `New form submission from ${formData.Name}.\nDetails: ${JSON.stringify(formData)}`,
+      html: `<p>New form submission from ${formData.Name}.</p><p>Details: ${JSON.stringify(formData)}</p>`,
       attachments: [
         {
           filename: 'form-data.pdf',
