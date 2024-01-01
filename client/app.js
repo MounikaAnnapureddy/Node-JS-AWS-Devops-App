@@ -49,7 +49,9 @@ fetch(`${URL}/submit-form`, {
     if (data.success) {
       console.log("Form submitted successfully!");
       alert("Form submitted successfully!");
+      console.log("Before Redirection");
       window.location.replace(URL + "/success.html");
+      console.log("After Redirection");
     } else {
       console.log("Form submission failed:", data.message);
       // Handle error
