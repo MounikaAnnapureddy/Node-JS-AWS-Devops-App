@@ -57,7 +57,7 @@ reviewForm.addEventListener("submit", function (e) {
         // Check if the response has a success property
         if (result && result.success) {
           alert("Form submitted successfully!");
-          window.location.href = `${URL}/success.html`;;
+          location.href = URL + "/" + filePath;
           // Add any additional actions here
         } else {
           alert("Form submission failed. Please try again.");
