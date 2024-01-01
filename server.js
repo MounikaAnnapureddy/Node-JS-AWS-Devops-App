@@ -69,12 +69,12 @@ app.post("/submit-form", async (req, res) => {
   const pdfDoc = new PDFDocument();
   const pdfBuffer = await new Promise((resolve) => {
     pdfDoc.pipe(res);
-    pdfDoc.text(`New form submission from ${formData.name}`);
+    pdfDoc.text(`New form submission from ${formData.Name}`);
     pdfDoc.text(`Name: ${formData.name}`);
-    pdfDoc.text(`Company/College: ${formData.company}`);
-    pdfDoc.text(`Rating: ${formData.rating}`);
-    pdfDoc.text(`Comments: ${formData.comments}`);
-    pdfDoc.text(`Location: ${formData.location}`);
+    pdfDoc.text(`Company Or College: ${formData.CompanyorCollege}`);
+    pdfDoc.text(`Rating: ${formData.Rating}`);
+    pdfDoc.text(`Comments: ${formData.Comments}`);
+    pdfDoc.text(`Location: ${formData.Location}`);
     pdfDoc.end();
     const chunks = [];
     pdfDoc.on("data", (chunk) => chunks.push(chunk));
