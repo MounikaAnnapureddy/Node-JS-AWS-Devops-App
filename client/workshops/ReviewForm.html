@@ -78,7 +78,7 @@
                     value="0"
                     label="Select a country"
                     selected="selected"
-                    id="countries"
+                    
                   ></option>
                   <optgroup id="country-optgroup-Africa" label="Africa">
                     <option value="DZ" label="Algeria">Algeria</option>
@@ -525,7 +525,7 @@ button.addEventListener("click", function (e) {
   let companyorCollege = document.getElementById("companyField").value;
   let rating = document.getElementById("ratingsField").value;
   let comments = document.getElementById("commentsField").value;
-  let location = document.getElementById("countries").value;
+  let countries = document.getElementById("countries").value;
   if (name.trim() === "") {
     alert("Please fill all required fields!");
     return false;
