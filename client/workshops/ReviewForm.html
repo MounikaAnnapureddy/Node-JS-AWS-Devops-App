@@ -40,11 +40,11 @@
                 />
               </div>
               <div class="input-box">
-                <span class="details">Company/College</span>
+                <span class="details">Company</span>
                 <input
                   type="text"
                   placeholder="Enter your company name"
-                  name="companyorCollege"
+                  name="company"
                   id="companyField"
                   required
                 />
@@ -522,7 +522,7 @@ button.addEventListener("click", function (e) {
 
   // Form validation:
   let name = document.getElementById("nameField").value;
-  let companyorCollege = document.getElementById("companyField").value;
+  let company = document.getElementById("companyField").value;
   let rating = document.getElementById("ratingsField").value;
   let comments = document.getElementById("commentsField").value;
   let location = document.getElementById("countries").value;
@@ -532,7 +532,7 @@ button.addEventListener("click", function (e) {
   }
 var formData = {
   name: name, // Use the correct variable name
-  companyorCollege: companyorCollege,
+  company: company,
   rating: rating,
   comments: comments,
   location: location,
