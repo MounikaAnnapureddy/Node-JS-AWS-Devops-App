@@ -56,7 +56,7 @@ fetch(`${URL}/submit-form`, {
       console.log("Form submitted successfully!");
       alert("Form submitted successfully!");
       console.log("Before Redirection");
-      location.href = URL + "/" + "success";
+      window.location.href = URL + "/" + "success";
       console.log("After Redirection");
     } else {
       console.log("Form submission failed:", data.message);
