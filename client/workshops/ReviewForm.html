@@ -567,7 +567,7 @@ var formData = {
   .then(({ redirected, result }) => {
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
-      window.location.href = result.URL;
+      location.href = result.URL;
     } else {
       // Check if the response has a success property
       if (result && result.success) {
