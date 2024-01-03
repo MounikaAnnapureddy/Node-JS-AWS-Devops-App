@@ -33,6 +33,7 @@
               <div class="input-box">
                 <span class="details">Full Name</span>
                 <input
+                  name="name"
                   type="text"
                   placeholder="Enter your name"
                   id="nameField"
@@ -513,9 +514,11 @@
     <script>
  var button = document.getElementById("submit-btn");
       var URL = "http://localhost:3000";
+      console.log("checkpoint10");
 button.addEventListener("click", function (e) {
+  console.log("checkpoint9");
   e.preventDefault();
-
+console.log("checkpoint3");
   // Form validation:
   let name = document.getElementById("nameField").value;
   let company = document.getElementById("companyField").value;
@@ -526,6 +529,7 @@ button.addEventListener("click", function (e) {
     alert("Please fill all required fields!");
     return false;
   }
+  console.log("checkpoint4");
 var formData = {
   name: name, // Use the correct variable name
   company: company,
@@ -535,7 +539,7 @@ var formData = {
   // Include other form fields as needed
 };
 
-  
+  console.log("checkpoint5");
 
   // Fetch request to submit form data
   fetch("/submit-form", {
@@ -545,6 +549,7 @@ var formData = {
     },
     body: JSON.stringify(formData),
   })
+    console.log("checkpoint6");
     .then((response) => {
     // Always parse JSON if the response is not a redirect
     return response.json().then((result) => ({
@@ -552,6 +557,7 @@ var formData = {
       result: result,
     }));
   })
+                        console.log("checkpoint7");
   .then(({ redirected, result }) => {
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
@@ -560,6 +566,7 @@ var formData = {
       // Check if the response has a success property
       if (result && result.success) {
         alert("Form submitted successfully!");
+        console.log("checkpoint8");
         location.href = URL + "/" + "success";
         // Add any additional actions here
       } else {
