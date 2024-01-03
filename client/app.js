@@ -32,8 +32,11 @@ console.log("checkpoint1");
   var location = document.getElementById("countries");
 
   var formData = {
-    Name: name ? name.value : "Anonymous", // Use "Anonymous" if the name is not provided
-   
+    name: name ? name.value : "Anonymous", // Use "Anonymous" if the name is not provided
+    company: company ? company.value : "Anonymous",
+    rating: rating ? rating.value : "Anonymous",
+    comments: comments ? comments.value : "Anonymous",
+    location: location ? location.value : "Anonymous",
     // Include other form fields as needed
   };
 
