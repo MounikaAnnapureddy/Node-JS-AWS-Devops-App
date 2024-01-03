@@ -28,7 +28,7 @@
           Please Provide your feedback.
         </div>
         <div class="content">
-          <form method="post" name="Form" id="reviewForm">
+          <form method="post" name="Form" id="reviewForm" action="/submit-form">
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Full Name</span>
@@ -518,7 +518,7 @@
  var button = document.getElementById("submit-btn");
       var URL = "http://localhost:3000";
 button.addEventListener("click", function (e) {
- // e.preventDefault();
+  e.preventDefault();
 
   // Form validation:
   let name = document.getElementById("nameField").value;
