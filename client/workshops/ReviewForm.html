@@ -522,10 +522,10 @@ button.addEventListener("click", function (e) {
   let rating = document.getElementById("ratingsField").value;
   let comments = document.getElementById("commentsField").value;
   let location = document.getElementById("countries").value;
-  //if (name.trim() === "") {
-    //alert("Please fill all required fields!");
-    //return false;
-  //}
+  if (name.trim() === "" || company.trim() === "" || rating.trim() === "") {
+    alert("Please fill all required fields!");
+    return false;
+  }
 var formData = {
   name: name, // Use the correct variable name
   company: company,
