@@ -19,8 +19,6 @@ btnReview.addEventListener("click", function (e) {
   location.href = URL+ "/" + filePath;
 });
 
-// Assuming you have a form with an ID "reviewForm"
-
 
 // Assuming you have a form with an ID "reviewForm"
 reviewForm.addEventListener("submit", function (e) {
