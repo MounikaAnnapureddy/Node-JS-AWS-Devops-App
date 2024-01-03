@@ -497,15 +497,11 @@
           </div>
           <!-- Social Icons -->
           <div class="social">
-            <!--<a href="#" target="_blank">
-              <i id="twitter" class="icon-twitter"></i>
-            </a>-->
+            
             <a href="https://github.com/MounikaAnnapureddy/" target="_blank">
               <i id="github" class="icon-github"></i>
             </a>
-           <!-- <a href="#" target="_blank">
-              <i id="youtube" class="icon-youtube"></i>
-            </a>-->
+           
             <a href="https://www.linkedin.com/in/mounika-annapureddy-737279261/" target="_blank">
               <i id="linkedin" class="icon-linkedin-sign"></i>
             </a>
@@ -526,10 +522,10 @@ button.addEventListener("click", function (e) {
   let rating = document.getElementById("ratingsField").value;
   let comments = document.getElementById("commentsField").value;
   let location = document.getElementById("countries").value;
-  if (name.trim() === "") {
-    alert("Please fill all required fields!");
-    return false;
-  }
+  //if (name.trim() === "") {
+    //alert("Please fill all required fields!");
+    //return false;
+  //}
 var formData = {
   name: name, // Use the correct variable name
   company: company,
@@ -539,15 +535,7 @@ var formData = {
   // Include other form fields as needed
 };
 
-  // Create an object with form data
-  /*var formData = {
-    name: nameField ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
-    companyorCollege: companyField ? companyField.value : "Anonymous",
-    rating: ratingsField ? ratingsField.value : "0",
-    comments: commentsField ? commentsField.value : "none provided",
-    location: countries ? countries.value : "Anonymous",
-    // Include other form fields as needed
-  };*/
+  
 
   // Fetch request to submit form data
   fetch("/submit-form", {
