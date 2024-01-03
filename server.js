@@ -58,6 +58,7 @@ const transporter = nodemailer.createTransport({
   port: 1025, // The port MailDev is configured to use
   ignoreTLS: true,
 });
+let formSubmitted = false;
 app.post("/submit-form", async (req, res) => {
   const formData = req.body;
 
@@ -106,6 +107,18 @@ app.post("/submit-form", async (req, res) => {
       });
     }
     });
+});
+// Route to serve the success page
+app.get("/success", (req, res) => {
+  // Check if the form has been successfully submitted
+  if (formSubmitted) {
+    const path = resolve(process.env.STATIC_DIR + "/success.html");
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.sendFile(path);
+  } else {
+    // If form submission hasn't occurred, redirect to the home page or handle it as needed
+    res.redirect("/");
+  }
 });
 // Server listening:
 app.listen(port, () => {
