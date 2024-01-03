@@ -515,7 +515,8 @@
     <!-- Client-side Js -->
     <script>
  var btn = document.getElementById("submit-btn");
-      var URL = "http://localhost:3000";
+      var url = "http://localhost:3000";
+      var filepath="/success.html";
       console.log("checkpoint10");
 btn.addEventListener("click", function (e) {
   console.log("checkpoint9");
@@ -565,13 +566,13 @@ var formData = {
     console.log("checkpoint7");
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
-      location.href = result.URL;
+      window.location.href = result.url;
     } else {
       // Check if the response has a success property
       if (result && result.success) {
         alert("Form submitted successfully!");
         console.log("checkpoint8");
-        location.href = URL + "/" + "success";
+        location.href = url+filepath;
         console.log("checkpoint12");
         // Add any additional actions here
       } else {
