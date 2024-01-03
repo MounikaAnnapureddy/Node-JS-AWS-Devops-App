@@ -557,8 +557,9 @@ var formData = {
       result: result,
     }));
   })
-                        console.log("checkpoint7");
+                        
   .then(({ redirected, result }) => {
+    console.log("checkpoint7");
     if (redirected) {
       // If the response is a redirect, manually navigate to the new location
       location.href = result.URL;
