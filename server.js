@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const { resolve } = require("path");
 const port = process.env.PORT || 3000;
 
@@ -12,7 +13,11 @@ const emailPassword = process.env.EMAIL_PASSWORD;
 const stripe = require("stripe")(api_key);
 const PDFDocument = require("pdfkit");
 // ------------ Imports & necessary things here ------------
-
+app.use(session({
+  secret: process.env.SECRET_KEY, // Change this to a secret key for session encryption
+  resave: false,
+  saveUninitialized: true,
+}));
 // Setting up the static folder:
 // app.use(express.static(resolve(__dirname, "./client")));
 app.use(express.static(resolve(__dirname, process.env.STATIC_DIR)));
