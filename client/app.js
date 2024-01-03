@@ -25,16 +25,16 @@ btnReview.addEventListener("click", function (e) {
 // Assuming you have a form with an ID "reviewForm"
 reviewForm.addEventListener("submit", function (e) {
   e.preventDefault();
-
+console.log("checkpoint1");
   // Assuming you have a form with a name field
   var name = document.getElementById("nameField"); // Adjust the ID based on your actual HTML
   var company = document.getElementById("companyField");
   var rating = document.getElementById("ratingsField");
   var comments = document.getElementById("commentsField");
   var location = document.getElementById("countries");
-
+console.log("checkpoint2");
   var formData = {
-    Name: name ? nameField.value : "Anonymous", // Use "Anonymous" if the name is not provided
+    Name: name ? name.value : "Anonymous", // Use "Anonymous" if the name is not provided
     Company: company ? company.value : "Anonymous",
     Rating: rating ? rating.value : "0",
     Comments: comments ? comments.value : "none provided",
