@@ -514,11 +514,11 @@
     </div>
     <!-- Client-side Js -->
     <script>
- var btn = document.getElementById("submit-btn");
+ var reviewForm = document.getElementById("submit-btn");
       var url = "http://localhost:3000";
       var filepath = "/success.html";
       console.log("checkpoint10");
-btn.addEventListener("click", function (e) {
+reviewForm.addEventListener("submit", function (e) {
   console.log("checkpoint9");
   e.preventDefault();
 console.log("checkpoint3");
