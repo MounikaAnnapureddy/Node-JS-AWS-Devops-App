@@ -98,7 +98,7 @@ app.post("/submit-form", async (req, res) => {
       await transporter.sendMail(mailOptions);
       // Instead of redirecting, send a JSON response indicating success
       res.json({ success: true });
-      location.href = "hhtp://localhost:3000/success";
+      location.href = "http://localhost:3000/success";
     } catch (error) {
       console.error("Error sending email:", error);
       res.status(500).json({
