@@ -32,13 +32,10 @@ console.log("checkpoint1");
   var rating = document.getElementById("ratingsField");
   var comments = document.getElementById("commentsField");
   var location = document.getElementById("countries");
-console.log("checkpoint2");
+
   var formData = {
     Name: name ? name.value : "Anonymous", // Use "Anonymous" if the name is not provided
-    Company: company ? company.value : "Anonymous",
-    Rating: rating ? rating.value : "0",
-    Comments: comments ? comments.value : "none provided",
-    Location: location ? location.value : "Anonymous",
+   
     // Include other form fields as needed
   };
 
