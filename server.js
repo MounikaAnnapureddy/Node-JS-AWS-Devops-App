@@ -63,20 +63,21 @@ app.post("/submit-form", async (req, res) => {
 
   // Create a PDF document
   const pdfDoc = new PDFDocument();
-  const pdfChunks = [];
-  
-  // ... PDF content creation ...
+   // ... PDF content creation ...
   pdfDoc.text(`New form submission from ${formData.name}`);
   pdfDoc.text(`Name: ${formData.name}`);
   pdfDoc.text(`Company: ${formData.company}`);
   pdfDoc.text(`Rating: ${formData.rating}`);
   pdfDoc.text(`Comments: ${formData.comments}`);
   pdfDoc.text(`Location: ${formData.location}`);
-  pdfDoc.end();
   
+  const pdfChunks = [];
   pdfDoc.on("data", (chunk) => pdfChunks.push(chunk));
-  pdfDoc.on("end", async () => {
-    const pdfBuffer = Buffer.concat(pdfChunks);
+ 
+  pdfDoc.end();
+  const pdfBuffer = Buffer.concat(pdfChunks);
+ 
+    
 
     const mailOptions = {
       from: formData.email ? formData.email : "noreply@example.com",
@@ -106,7 +107,7 @@ app.post("/submit-form", async (req, res) => {
         message: "Error submitting the form. Please try again.",
       });
     }
-  });
+ 
 });
 // Server listening:
 app.listen(port, () => {
