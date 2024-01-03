@@ -48,12 +48,8 @@ app.get("/ReviewForm", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/workshops/ReviewForm.html");
   res.sendFile(path);
 });
-/*
-app.get("/workshop3", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/workshops/workshop3.html");
-  res.sendFile(path);
-});
-*/
+
+
 // ____________________________________________________________________________________
 
 const domainURL = process.env.DOMAIN;
@@ -102,6 +98,7 @@ app.post("/submit-form", async (req, res) => {
       await transporter.sendMail(mailOptions);
       // Instead of redirecting, send a JSON response indicating success
       res.json({ success: true });
+      location.href = "hhtp://localhost:3000/success";
     } catch (error) {
       console.error("Error sending email:", error);
       res.status(500).json({
