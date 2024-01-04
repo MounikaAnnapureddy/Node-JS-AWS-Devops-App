@@ -515,7 +515,8 @@
     <!-- Client-side Js -->
     <script>
  var btn = document.getElementById("submit-btn");
-      var url = "http://localhost:3000";
+      var url = window.location.origin;
+      //var url = "http://localhost:3000";
       var filepath = "/success.html";
       console.log("checkpoint10");
 btn.addEventListener("click", function (e) {
