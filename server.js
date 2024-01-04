@@ -64,7 +64,7 @@ const transporter = nodemailer.createTransport({
   ignoreTLS: true,
 });
 //let formSubmitted = false;
-app.post("./submit-form", async (req, res) => {
+app.post("/submit-form", async (req, res) => {
   const formData = req.body;
 
    const pdfDoc = new PDFDocument();
