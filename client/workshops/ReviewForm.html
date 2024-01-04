@@ -514,8 +514,7 @@
     </div>
     <!-- Client-side Js -->
     <script>
-      const domainURL = process.env.DOMAIN;
-      const port = process.env.PORT || 3000;
+     
  var btn = document.getElementById("submit-btn");
       var url = "http://localhost:3000";
       var filepath = "/success.html";
@@ -574,8 +573,8 @@ var formData = {
       if (result && result.success) {
         alert("Form submitted successfully!");
         console.log("checkpoint8");
-        console.log("Redirect URL:", $domainURL + filepath);
-        window.location.href = $domainURL + filepath;
+        console.log("Redirect URL:", url + filepath);
+        window.location.href = url + filepath;
         console.log("checkpoint12");
         // Add any additional actions here
       } else {
