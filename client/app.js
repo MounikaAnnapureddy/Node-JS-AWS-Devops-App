@@ -4,7 +4,9 @@ var btnOpen = document.getElementById("work-1");
 var btnReview = document.getElementById("review");
 var reviewForm = document.getElementById("reviewForm");
 
-var URL = "http://localhost:3000";
+
+var URL = window.location.origin;
+//var URL = "http://localhost:3000";
 
 btnOpen.addEventListener("click", function (e) {
   e.preventDefault();
