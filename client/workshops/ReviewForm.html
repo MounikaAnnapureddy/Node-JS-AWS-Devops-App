@@ -28,7 +28,7 @@
           Please Provide your feedback.
         </div>
         <div class="content">
-          <form method="post" name="Form" id="reviewForm" action="/submit-form">
+          <form method="post" name="Form" id="reviewForm" action="./submit-form">
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Full Name</span>
@@ -546,7 +546,7 @@ var formData = {
   console.log("checkpoint5");
 
   // Fetch request to submit form data
-  fetch("/submit-form", {
+  fetch("./submit-form", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
