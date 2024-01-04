@@ -42,7 +42,7 @@ console.log("checkpoint1");
 
   // Send the form data to the server
   console.log("Before fetch");
-fetch(`${URL}/submit-form`, {
+fetch(`${URL}./submit-form`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
